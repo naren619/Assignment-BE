@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <label> 
+              <!-- input field for uploading CSV -->
+              <input type="file" #csvReader name="upload_csv" id="txtFileUpload" (change)="fileUploader($event)" accept=".csv,.xml" />  
+            </label>
+        </div>
+        <div class="col-sm-4">
+            <h3 class="p-2"> Statement Processor</h3> 
+        </div>
+        <div class="col-sm-4" *ngIf="recordList.length > 0">
+            <!-- input field for filtering thr issue count --> 
+            <label class="pull-right"> 
+                    <button class="btn btn-default" (click)="generatefailedTransactionReport()">Generate Report</button>
+            </label> 
+        </div>
+    </div> 
+
+    <!-- table for listing the CSV file records and filtering -->
+    <table id="csvTable" class="listTable" *ngIf="recordList.length > 0" >
+        <thead>
+            <tr>
+                <th *ngFor="let header of headerList;let i = index">{{header}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of recordList">
+                <td *ngFor="let header1 of headerList ; let k = index;">
+                    <div *ngIf="header1 == 'Date of birth'; else elseBlock">{{record[header1]  | date:'MM-dd-yyyy'}}</div>
+                    <ng-template #elseBlock>{{record[header1]}}</ng-template>
+                </td> 
+            </tr> 
+        </tbody>
+    </table>
+    <div *ngIf="validatedList.length > 0">
+        <h4> Generated Report with validation</h4>
+        <!-- table for listing the generated report file records and filtering -->
+        <table id="ReportTable" class="listTable"  >
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th>Description</th> 
+                    <th>ErrorType</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let record of validatedList"> 
+                    <td>{{record.data['reference']}}</td>
+                    <td>{{record.data['description']}}</td> 
+                    <td>{{record.errorType}}</td> 
+                </tr>  
+            </tbody>
+        </table>
+    </div> 
+</div> 
+<!-- <router-outlet></router-outlet> -->

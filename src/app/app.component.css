@@ -1,0 +1,76 @@
+/* Common style for table and fields */
+
+    .listTable {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0px;
+    }
+
+    .listTable td, .listTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .listTable tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+
+    .listTable tr:hover {
+        background-color: #ddd;
+    }
+
+    .listTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    label {
+        padding: 5px;
+        background: #4CAF50;   
+        margin-top:10px;
+        cursor: pointer;
+        font-weight: 500;   
+        color:#FFF;
+    }
+
+    /* Styles For input fields */
+    input[type="file"] {
+        display: block;
+        cursor: pointer;
+    }
+    input[type="file"]:focus {
+        display: none; 
+        border :none;
+    }
+    input[type="text"] {
+        border :none;
+        color:#333;
+        padding: 5px;
+    }
+
+    /* Styles For input place holder */
+    ::placeholder {
+        color: #ccc;
+        opacity: 1;
+    }
+
+    :-ms-input-placeholder { 
+        color: #ccc;
+    }
+
+    ::-ms-input-placeholder {
+        color: #ccc;
+    }
+
+    .app-heading{
+        text-align: center;
+        font-size: 16px;
+        padding: 7px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #3a3c3a; 
+    }
